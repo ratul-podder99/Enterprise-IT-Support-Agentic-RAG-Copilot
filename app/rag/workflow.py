@@ -1,5 +1,6 @@
 import logging
 from typing import Literal
+from langchain_groq import ChatGroq
 from langchain_openai import ChatOpenAI
 from langchain_tavily import TavilySearch
 from langgraph.graph import StateGraph, START, END
@@ -18,7 +19,7 @@ def llm():
     if _llm is None:
         if not settings.groq_api_key:
             raise RuntimeError("GROQ_API_KEY is missing")
-        _llm = ChatOpenAI(
+        _llm = ChatGroq(
             model=settings.groq_model,
             temperature=0,
             api_key=settings.groq_api_key,
