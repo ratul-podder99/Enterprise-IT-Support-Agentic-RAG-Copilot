@@ -9,7 +9,7 @@ WORKDIR /app
 
 # CPU-only PyTorch first (much smaller than the default CUDA build),
 # so the later install of sentence-transformers reuses it.
-RUN pip install torch --index-url https://download.pytorch.org/whl/cpu
+RUN pip install "torch==2.14.1+cpu" --extra-index-url https://download.pytorch.org/whl/cpu
 
 COPY requirements.txt .
 RUN pip install -r requirements.txt
