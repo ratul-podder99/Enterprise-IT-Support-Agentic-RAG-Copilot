@@ -9,8 +9,8 @@ from app.core.config import get_settings
 settings = get_settings()
 
 
-EMBEDDING_MODEL = "Qwen/Qwen3-Embedding-0.6B"
-EMBEDDING_DIMENSION = 1024 
+EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
+EMBEDDING_DIMENSION = 384 
 
 _embeddings = None
 _vectorstore = None
@@ -30,11 +30,9 @@ def get_embeddings():
         _embeddings = HuggingFaceEmbeddings(
             model_name=EMBEDDING_MODEL,
             model_kwargs={"device": _pick_device()},
-            encode_kwargs={"normalize_embeddings": True, "batch_size": 16},
-            query_encode_kwargs={"prompt_name": "query", "normalize_embeddings": True},
+            encode_kwargs={"normalize_embeddings": True, "batch_size": 32},
         )
     return _embeddings
-
 
 def ensure_index():
     if not settings.pinecone_api_key:

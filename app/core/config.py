@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     pinecone_api_key: str = ""
     pinecone_index_name: str = "it-support-rag"
     pinecone_namespace: str = "it-support-kb"
-    embedding_model: str = "Qwen/Qwen3-Embedding-0.6B"
+    embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     groq_model: str = "openai/gpt-oss-20b"
     top_k: int = 4
     max_retries: int = 1
