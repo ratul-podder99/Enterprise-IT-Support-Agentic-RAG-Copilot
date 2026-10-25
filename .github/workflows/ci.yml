@@ -37,7 +37,7 @@ jobs:
           PINECONE_NAMESPACE: test-ns
           ADMIN_API_KEY: test
           APP_ENV: test
-        run: pytest -q
+        run: python -m pytest -q
 
   docker-build:
     runs-on: ubuntu-latest
